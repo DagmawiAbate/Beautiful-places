@@ -1,0 +1,27 @@
+{
+  "name": "mern--beautiful-places",
+  "version": "1.0.0",
+  "description": "MERN App - where you can share beautiful places",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon backend/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DagmawiAbate/Beautiful-places.git"
+  },
+  "author": "Dagmawi Abate",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DagmawiAbate/Beautiful-places/issues"
+  },
+  "homepage": "https://github.com/DagmawiAbate/Beautiful-places#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
