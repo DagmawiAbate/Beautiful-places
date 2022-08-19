@@ -27,7 +27,7 @@ app.use((error, req, res, next) => {
 })
 
 mongoose
-  .connect()
+  .connect('mongodb+srv://dagi1234:dagi1234@dagi.fbijycc.mongodb.net/places?retryWrites=true&w=majority')
   .then(() => {
     app.listen(5000)
   })
