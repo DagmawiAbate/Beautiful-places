@@ -41,7 +41,7 @@ const getPlaceById = async (req, res, next) => {
     return next(error)
   }
 
-  res.json({ place: place.toObject( {getters: true }) }) // => { place } => { place: place }
+  res.json({ place: place.toObject({ getters: true }) }) // => { place } => { place: place }
 }
 
 // function getPlacesById() { ... }
@@ -50,16 +50,16 @@ const getPlaceById = async (req, res, next) => {
 const getPlacesByUserId = async (req, res, next) => {
   const userId = req.params.uid
 
-  let places;
+  let places
   try {
     places = await Place.find({ creator: userId })
   } catch (err) {
-    const error = new HttpError('Fetching placesfailed, please try again later',
-    500
+    const error = new HttpError(
+      'Fetching placesfailed, please try again later',
+      500
     )
     return next(error)
   }
-
 
   if (!places || places.length === 0) {
     return next(
@@ -67,7 +67,7 @@ const getPlacesByUserId = async (req, res, next) => {
     )
   }
 
-  res.json({ places: places.map(place => place.toObject({ getters: true })) })
+  res.json({ places: places.map((place) => place.toObject({ getters: true })) })
 }
 
 const createPlace = async (req, res, next) => {
@@ -111,17 +111,22 @@ const createPlace = async (req, res, next) => {
 const updatePlace = async (req, res, next) => {
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
-    throw new HttpError('Invalid inputs passed, please check your data.', 422)
+    return next(
+      new HttpError('Invalid inputs passed, please check your data.', 422)
+    )
   }
 
   const { title, description } = req.body
   const placeId = req.params.pid
 
-  let place;
+  let place
   try {
     place = await Place.findById(placeId)
   } catch (err) {
-    const error = new HttpError('Something went wrong, cold not update place.', 500)
+    const error = new HttpError(
+      'Something went wrong, cold not update place.',
+      500
+    )
     return next(error)
   }
 
@@ -131,7 +136,10 @@ const updatePlace = async (req, res, next) => {
   try {
     await place.save()
   } catch (err) {
-    const error = new HttpError('Something went wrong, could not update place.', 500)
+    const error = new HttpError(
+      'Something went wrong, could not update place.',
+      500
+    )
     return next(error)
   }
 
@@ -143,10 +151,11 @@ const deletePlace = async (req, res, next) => {
 
   let place
   try {
-    place = await Place.findById(placeId)    
+    place = await Place.findById(placeId)
   } catch (err) {
     const error = new HttpError(
-      'Something went wrong, could not delete place.', 500
+      'Something went wrong, could not delete place.',
+      500
     )
     return next(error)
   }
@@ -155,7 +164,8 @@ const deletePlace = async (req, res, next) => {
     await place.remove()
   } catch (err) {
     const error = new HttpError(
-      'Something went wrong, could not delete place.', 500
+      'Something went wrong, could not delete place.',
+      500
     )
     return next(error)
   }
