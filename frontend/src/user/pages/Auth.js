@@ -54,16 +54,16 @@ const Auth = () => {
   const authSubmitHandler = async (event) => {
     event.preventDefault()
 
-    if (!isLoginMode) {
+    if (isLoginMode) {
     } else {
       try {
-        const response = fetch('http://localhost:5000/api/users/signup', {
+        const response = await fetch('http://localhost:5000/api/users/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          name: formState.imputs.name.value,
+          name: formState.inputs.name.value,
           email: formState.inputs.email.value,
           password: formState.inputs.password.value
         })
