@@ -76,7 +76,6 @@ const Auth = () => {
         )
         auth.login()
       } catch (err) {}
-      auth.login()
     } else {
       try {
         await sendRequest(
