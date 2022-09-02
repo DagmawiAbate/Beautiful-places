@@ -46,7 +46,7 @@ const NewPlace = () => {
         JSON.stringify({
           title: formState.inputs.title.value,
           description: formState.inputs.description.value,
-          address: formState.inputes.address.value,
+          address: formState.inputs.address.value,
           creator: auth.userId
         }),
         { 'Content-Type': 'application/json' }
@@ -79,14 +79,14 @@ const NewPlace = () => {
         />
         <Input
           id='address'
-          element='textarea'
+          element='input'
           label='Address'
           validators={[VALIDATOR_REQUIRE()]}
           errorText='Please enter a valid address.'
           onInput={inputHandler}
         />
         <Button type='submit' disabled={!formState.isValid}>
-          Add PLACE
+          ADD PLACE
         </Button>
       </form>
     </React.Fragment>
