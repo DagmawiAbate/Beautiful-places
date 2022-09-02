@@ -8,7 +8,7 @@ const Place = require('../models/place')
 const User = require('../models/user')
 
 const getPlaceById = async (req, res, next) => {
-  const placeId = req.params.pid 
+  const placeId = req.params.pid
 
   let place
   try {
@@ -54,7 +54,11 @@ const getPlacesByUserId = async (req, res, next) => {
     )
   }
 
-  res.json({ places: userWithPlaces.places.map((place) => place.toObject({ getters: true })) })
+  res.json({
+    places: userWithPlaces.places.map((place) =>
+      place.toObject({ getters: true })
+    )
+  })
 }
 
 const createPlace = async (req, res, next) => {
@@ -95,7 +99,7 @@ const createPlace = async (req, res, next) => {
 
   if (!user) {
     const error = new HttpError('Could not find user for provided id', 404)
-    return next (error)
+    return next(error)
   }
 
   console.log(user)
@@ -167,7 +171,7 @@ const deletePlace = async (req, res, next) => {
     return next(error)
   }
 
-  if(!place) {
+  if (!place) {
     const error = new HttpError('Could not find place fro this id.', 404)
     return next(error)
   }
@@ -177,7 +181,7 @@ const deletePlace = async (req, res, next) => {
     sess.startTransaction()
     await place.remove({ session: sess })
     place.creator.places.pull(place)
-    await place.creator.save({session: sess})
+    await place.creator.save({ session: sess })
     await sess.commitTransaction()
   } catch (err) {
     const error = new HttpError(
