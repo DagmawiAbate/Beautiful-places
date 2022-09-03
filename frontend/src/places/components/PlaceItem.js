@@ -41,7 +41,7 @@ const PlaceItem = (props) => {
 
   return (
     <React.Fragment>
-      <ErrorModal error={error} onClear={clearError}/>
+      <ErrorModal error={error} onClear={clearError} />
       <Modal
         show={showMap}
         onCancel={closeMapHandler}
@@ -51,7 +51,7 @@ const PlaceItem = (props) => {
         footer={<Button onClick={closeMapHandler}>CLOSE</Button>}
       >
         <div className='map-container'>
-          <Map center={props.ccordinates} zoom={16} />
+          <Map center={props.coordinates} zoom={16} />
         </div>
       </Modal>
       <Modal
@@ -71,7 +71,7 @@ const PlaceItem = (props) => {
         }
       >
         <p>
-          Do you want to proceed and delete this place? Please not that it can't
+          Do you want to proceed and delete this place? Please note that it can't
           be undone thereafter.
         </p>
       </Modal>
