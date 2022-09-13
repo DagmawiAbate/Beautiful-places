@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
@@ -30,6 +32,12 @@ app.use((req, res, next) => {
 })
 
 app.use((error, req, res, next) => {
+  if (req.file) {
+    fs.unlink(req.file.path, err => {
+      console.log(err);
+    })
+  }
+
   if (res.headerSent) {
     return next(error)
   }
@@ -39,7 +47,8 @@ app.use((error, req, res, next) => {
 
 mongoose
   .connect(
-    'mongodb+srv://dagi1234:dagi1234@dagi.fbijycc.mongodb.net/mern_beauty?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true}
+    'mongodb+srv://dagi1234:dagi1234@dagi.fbijycc.mongodb.net/mern_beauty?retryWrites=true&w=majority',
+    { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => {
     app.listen(5000)

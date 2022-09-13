@@ -48,8 +48,7 @@ const signup = async (req, res, next) => {
   const createdUser = new User({
     name,
     email,
-    image:
-      'https://thumbs.dreamstime.com/z/rainbow-love-heart-background-red-wood-60045149.jpg',
+    image: req.file.path,
     password,
     places: []
   })
