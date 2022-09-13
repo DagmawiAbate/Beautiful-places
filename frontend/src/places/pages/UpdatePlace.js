@@ -18,7 +18,7 @@ import './PlaceForm.css'
 const UpdatePlace = () => {
   const auth = useContext(AuthContext)
   const { isLoading, error, sendRequest, clearError } = useHttpClient()
-  const [ loadedPlace, setLoadedPlace ] = useState()
+  const [loadedPlace, setLoadedPlace] = useState()
   const placeId = useParams().placeId
   const history = useHistory()
 

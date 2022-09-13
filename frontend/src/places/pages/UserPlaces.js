@@ -24,7 +24,7 @@ const UserPlaces = () => {
     fetchPlaces()
   }, [sendRequest, userId])
 
-  const placeDeleteHandler = (deletedPlaceId) => {
+  const placeDeletedHandler = (deletedPlaceId) => {
     setLoadedPlaces((prevPlaces) =>
       prevPlaces.filter((place) => place.id !== deletedPlaceId)
     )
@@ -39,7 +39,7 @@ const UserPlaces = () => {
         </div>
       )}
       {!isLoading && loadedPlaces && (
-        <PlaceList items={loadedPlaces} onDeletePlace={placeDeleteHandler} />
+        <PlaceList items={loadedPlaces} onDeletePlace={placeDeletedHandler} />
       )}
     </React.Fragment>
   )
