@@ -39,7 +39,7 @@ app.use((error, req, res, next) => {
 
 mongoose
   .connect(
-    'mongodb+srv://dagi1234:dagi1234@dagi.fbijycc.mongodb.net/mern_beauty?retryWrites=true&w=majority'
+    'mongodb+srv://dagi1234:dagi1234@dagi.fbijycc.mongodb.net/mern_beauty?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true}
   )
   .then(() => {
     app.listen(5000)
