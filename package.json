@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "express-validator": "^6.2.0",
@@ -30,7 +31,7 @@
     "uuid": "^3.3.3"
   },
   "devDependencies": {
-    "nodemon": "^1.19.4",
-    "concurrently": "^7.3.0"
+    "concurrently": "^7.3.0",
+    "nodemon": "^1.19.4"
   }
 }
