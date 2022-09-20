@@ -133,7 +133,7 @@ const login = async (req, res, next) => {
   try {
     token = jwt.sign(
       { userId: existingUser.id, email: existingUser.email },
-      'suprtsecret_dont_share',
+      'supersecret_dont_share',
       { expiresIn: '1h' }
     )
   } catch (err) {
