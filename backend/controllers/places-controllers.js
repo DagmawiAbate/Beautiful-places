@@ -154,11 +154,8 @@ const updatePlace = async (req, res, next) => {
     return next(error)
   }
 
-  if(place.creator.toString() !== req.userData.userId) {
-    const error = new HttpError(
-      'You are not allowed to edit this place.',
-      401
-    )
+  if (place.creator.toString() !== req.userData.userId) {
+    const error = new HttpError('You are not allowed to edit this place.', 401)
     return next(error)
   }
 
@@ -184,7 +181,7 @@ const deletePlace = async (req, res, next) => {
     return next(error)
   }
 
-  if(place.creator.id !== req.userData.userId) {
+  if (place.creator.id !== req.userData.userId) {
     const error = new HttpError(
       'You are not allowed to delete this place.',
       401
@@ -209,12 +206,11 @@ const deletePlace = async (req, res, next) => {
     return next(error)
   }
 
-  fs.unlink(imagePath, err => {
-    console.log(err);
+  fs.unlink(imagePath, (err) => {
+    console.log(err)
   })
-  
-  res.status(200).json({ message: 'Deleted place' })
 
+  res.status(200).json({ message: 'Deleted place' })
 }
 
 exports.getPlaceById = getPlaceById

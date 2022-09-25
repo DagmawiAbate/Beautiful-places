@@ -1,5 +1,5 @@
 function getCoordsForAddress(address) {
-  const coordinates =  {
+  const coordinates = {
     lat: 40.7484474,
     lng: -73.9871516
   }
